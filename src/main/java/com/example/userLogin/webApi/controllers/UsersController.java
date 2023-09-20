@@ -90,7 +90,7 @@ public class UsersController {
 	}
 	
 	@GetMapping("/getAllByCountryIdAndCityIdIn/{countryId}/{citiesId}")
-	public List<GetAllByCountryIdAndCityIdInResponse> getAllByCountryIdAndCityIdIn(@PathVariable byte countryId,@PathVariable List<Integer> citiesId){
+	public List<GetAllByCountryIdAndCityIdInResponse> getAllByCountryIdAndCityIdIn(@PathVariable int countryId,@PathVariable List<Integer> citiesId){
 		return this.userService.getAllByCountryIdAndCityIdIn(countryId, citiesId);
 	}
 	
