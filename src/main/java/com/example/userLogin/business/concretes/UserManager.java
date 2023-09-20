@@ -32,6 +32,8 @@ public class UserManager implements UserService{
 	private ModelMapperService modelMapperService;
 	private UserBusinessRules userBusinessRules;
 
+	//********************************** KULLANICI KAYIT ************************************
+	
 	@Override
 	public void add(CreateUserRequest createUserRequest) {
 		
@@ -44,7 +46,10 @@ public class UserManager implements UserService{
 		
 		this.userRepository.save(user);
 	}
-
+	
+	
+	//********************************** KULLANICI SİLME ************************************
+	
 	@Override
 	public void delete(int id) {
 		this.userBusinessRules.checkIfIdIs(id);
@@ -52,7 +57,10 @@ public class UserManager implements UserService{
 		this.userRepository.deleteById(id);
 		
 	}
-
+	
+	
+	//********************************** KULLANICI GÜNCELLEME ************************************
+	
 	@Override
 	public void update(UpdateUserRequest updateUserRequest) {
 		
@@ -65,7 +73,10 @@ public class UserManager implements UserService{
 		this.userRepository.save(user);
 		
 	}
-
+	
+	
+	//********************************** BELİRTİLEN ID NUMARASINA SAHİP KULLANICIYI GETİRME ************************************
+	
 	@Override
 	public GetByIdUserResponse getById(int id) {
 		this.userBusinessRules.checkIfIdIs(id);
@@ -78,6 +89,9 @@ public class UserManager implements UserService{
 		return getByIdUserResponse;
 	}
 	
+	
+	//********************************** BÜTÜN KULLANICILARI GETİRME ************************************
+
 	@Override
 	public List<GetAllUsersResponse> getAll() {
 		
@@ -90,6 +104,9 @@ public class UserManager implements UserService{
 		return getAll;
 	}
 
+	
+	//********************************** BELİRTİLEN CİNSİYETTEKİ KULLANICILARI GETİRME ************************************
+
 	@Override
 	public List<GetAllByGenderIdResponse> getAllByGenderId(byte id) {
 		List<User> getAllByGenderId= this.userRepository.findAllByGenderId(id);
@@ -101,6 +118,8 @@ public class UserManager implements UserService{
 		return getAll;
 	}
 	
+	
+	//********************************** BELİRTİLEN ÜLKELERDEKİ KULLANICILARI GETİRME ************************************
 
 	@Override
 	public List<GetAllByCountryIdInResponse> getAllByCountryIdIn(List<Integer> countriesId) {
@@ -112,6 +131,9 @@ public class UserManager implements UserService{
 		
 		return getAll;
 	}
+
+	
+	//********************************** BELİRTİLEN ÜLKEDEKİ SEÇİLEN ŞEHİRLERDEKİ KULLANICILARI GETİRME ************************************
 
 	@Override
 	public List<GetAllByCountryIdAndCityIdInResponse> getAllByCountryIdAndCityIdIn(int countryId, List<Integer> cities) { 
@@ -125,6 +147,9 @@ public class UserManager implements UserService{
 		return getAll;
 	}
 
+	
+	//********************************** BELİRTİLEN KULLANICI ADINA SAHİP KULLANICIYI GETİRME ************************************
+
 	@Override
 	public GetByUsernameResponse getByUsername(String username) {
 		this.userBusinessRules.checkIfUsernameIs(username);
@@ -136,6 +161,9 @@ public class UserManager implements UserService{
 		return byUsernameResponse;
 	}
 
+	
+	//********************************** BELİRTİLEN AD VE SOYADA SAHİP KULLANICIYI GETİRME ************************************
+
 	@Override
 	public GetByNameAndSurnameResponse getByNameAndSurname(String name, String surname) {
 		User user= this.userRepository.findByNameAndSurname(name, surname);
@@ -145,6 +173,9 @@ public class UserManager implements UserService{
 		
 		return getByNameAndSurnameResponse;
 	}
+	
+	
+	//********************************** BELİRTİLEN TELEFON NUMARASINA SAHİP KULLANICIYI GETİRME ************************************
 
 	@Override
 	public GetByPhoneNumberResponse getByPhoneNumberResponse(String phoneNumber) {
@@ -157,6 +188,9 @@ public class UserManager implements UserService{
 		
 		return getByPhoneNumberResponse;
 	}
+
+	
+	//********************************** AKTİF OLAN KULLANICILARI GETİRME ************************************
 
 	@Override
 	public List<GetAllByActiveTrueResponse> getAllByActiveTrueResponse() {

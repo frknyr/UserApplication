@@ -18,6 +18,8 @@ public class CountriesController {
 	
 	private CountryService countryService;
 	
+	// ********************************* ÜLKE LİSTESİNİ GETİRME *********************************
+	
 	@GetMapping("/getAllCountries")
 	public List<GetAllCountriesResponse> getAllCountriesResponses(){
 		return this.countryService.getAllCountriesResponses();
